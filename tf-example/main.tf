@@ -21,7 +21,7 @@ provider "aws" {
 resource "aws_instance" "app_server" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
-  subnet_id     = "subnet-0b478fa403c52677a"
+  subnet_id     = "subnet-0c429fcd4ba09574e"
   key_name      = "gopi-ceq-gh-ssh-key"
 
   tags = {
