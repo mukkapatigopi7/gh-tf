@@ -20,30 +20,36 @@ provider "aws" {
 
 
 
-resource "aws_vpc" "my_vpc" {
-  cidr_block = "172.16.0.0/16"
+resource "aws_vpc" "VPC1_TF1" {
+  cidr_block = "10.10.0.0/16"
 
   tags = {
-    Name = "tf-example"
+    Name = "VPC1_TF1"
+    Owner= "gopi.mukkapati@cloudeq.com"
+    purpose = "Assaignment"
   }
 }
 
-resource "aws_subnet" "my_subnet" {
-  vpc_id            = aws_vpc.my_vpc.id
-  cidr_block        = "172.16.10.0/24"
+resource "aws_subnet" "SUBNET1_VPC1_TF1" {
+  vpc_id            = aws_vpc.VPC1_TF1.id
+  cidr_block        = "10.10.1.0/24"
   availability_zone = "us-east-2a"
 
   tags = {
-    Name = "tf-example"
+    Name = "SUBNET1_VPC1_TF1"
+    Owner= "gopi.mukkapati@cloudeq.com"
+    purpose = "Assaignment"
   }
 }
 
-resource "aws_network_interface" "foo" {
-  subnet_id   = aws_subnet.my_subnet.id
-  private_ips = ["172.16.10.100"]
+resource "aws_network_interface" "NI1_SUBNET1_VPC1_TF1" {
+  subnet_id   = aws_subnet.SUBNET1_VPC1_TF1.id
+  private_ips = ["10.10.1.100"]
 
   tags = {
-    Name = "primary_network_interface"
+    Name = "NI1_SUBNET1_VPC1_TF1"
+    Owner= "gopi.mukkapati@cloudeq.com"
+    purpose = "Assaignment"
   }
 }
 
@@ -54,7 +60,7 @@ resource "aws_instance" "app_server" {
   key_name      = "gopi-ceq-gh-ssh-key"
     
   network_interface {
-  network_interface_id = aws_network_interface.foo.id
+  network_interface_id = aws_network_interface.NI1_SUBNET1_VPC1_TF1.id
   device_index         = 0
   }
 
@@ -64,6 +70,8 @@ resource "aws_instance" "app_server" {
 
   tags = {
     Name = var.ec2_name
+    Owner= "gopi.mukkapati@cloudeq.com"
+    purpose = "Assaignment"
   }
 }
 
