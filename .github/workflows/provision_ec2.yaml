@@ -31,9 +31,12 @@ jobs:
         id:   apply
         env:
           TF_VAR_ec2_name:  "${{ github.event.inputs.ec2-name }}"
+          BUCKET_NAME: gopi-ceq-tfstate-bucke
+          TF_VAR_STATE_FILE: backup.tfstate
+          
         run: |
           cd tf-example/
-          terraform init
+          terraform init -no-color -reconfigure -force-copy -backend-config="bucket=$BUCKET_NAME" -backend-config="key=${{ env.TF_VAR_STATE_FILE }}"  -backend-config="encrypt=true"
           terraform validate
           terraform plan 
           terraform apply -auto-approve
