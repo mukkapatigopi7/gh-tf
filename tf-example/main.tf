@@ -26,7 +26,7 @@ resource "aws_vpc" "VPC1_TF1" {
   tags = {
     Name = "VPC1_TF1"
     Owner= "gopi.mukkapati@cloudeq.com"
-    purpose = "Assaignment"
+    Purpose = "Assaignment"
   }
 }
 
@@ -38,7 +38,7 @@ resource "aws_subnet" "SUBNET1_VPC1_TF1" {
   tags = {
     Name = "SUBNET1_VPC1_TF1"
     Owner= "gopi.mukkapati@cloudeq.com"
-    purpose = "Assaignment"
+    Purpose = "Assaignment"
   }
 }
 
@@ -49,7 +49,7 @@ resource "aws_network_interface" "NI1_SUBNET1_VPC1_TF1" {
   tags = {
     Name = "NI1_SUBNET1_VPC1_TF1"
     Owner= "gopi.mukkapati@cloudeq.com"
-    purpose = "Assaignment"
+    Purpose = "Assaignment"
   }
 }
 
@@ -71,12 +71,12 @@ resource "aws_instance" "app_server" {
   tags = {
     Name = var.ec2_name
     Owner= "gopi.mukkapati@cloudeq.com"
-    purpose = "Assaignment"
+    Purpose = "Assaignment"
   }
     volume_tags = {
     Name = var.ec2_name
     Owner= "gopi.mukkapati@cloudeq.com"
-    purpose = "Assaignment"
+    Purpose = "Assaignment"
   }
 }
 
