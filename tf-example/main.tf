@@ -73,5 +73,10 @@ resource "aws_instance" "app_server" {
     Owner= "gopi.mukkapati@cloudeq.com"
     purpose = "Assaignment"
   }
+    volume_tags = {
+    Name = var.ec2_name
+    Owner= "gopi.mukkapati@cloudeq.com"
+    purpose = "Assaignment"
+  }
 }
 
