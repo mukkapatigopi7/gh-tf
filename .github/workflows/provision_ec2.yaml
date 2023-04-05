@@ -35,7 +35,7 @@ jobs:
           TF_VAR_STATE_FILE: backup.tfstate
           
         run: |
-          cd tf-example/
+          cd infra/
           terraform init -no-color -reconfigure -force-copy -backend-config="bucket=$BUCKET_NAME" -backend-config="key=${{ env.TF_VAR_STATE_FILE }}"  -backend-config="encrypt=true"
           terraform validate
           terraform plan 
